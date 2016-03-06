@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mapventure</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row" id="row">
+            <div class="weather" id="weather">
+                <h2 id="weatherTitle">Weather <span id="inPD">in Port Douglas:</span></h2>
+                <div id="weatherIcon" class="weatherIcon"><img data-bind="attr: { src: iconURL }">
+                </div>
+                <p id="weatherMain" data-bind="text: weatherMain"></p>
+                <p id="weatherDescription" data-bind="text: weatherDescription"></p>
+                <p id="temp" data-bind="text: temp"></p>
+
+            </div>
+            <div class="map-container" id="map-container">
+                <div id="map" class="map"></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/knockout-3.4.0.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5m4FwYzZ7tHxkhWW8-DdRIw3Gi0tfweM&callback=initMap&libraries=places" onerror="reportGoogleMapsIsNotResponding()"></script>
+    <script src="js/main.js"></script>
+    <script src="js/jquery.min.js"></script>
+
+</body>
+
+</html>
