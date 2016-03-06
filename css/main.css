@@ -17,74 +17,19 @@ body {
     height: 800px;
     max-width: 100%;
 }
-
-.hidey{
-    visibility: hidden;
-
-}
-
-.hiddenError{
-    bottom: 40%;
-    right: 40%;
-    position: absolute;
-    width: 30%;
-    height: 30%;
+.infoBox {
+     position: absolute;
+    bottom: 0;
+    width: 40%;
+    height: 20%;
     background-color: black;
     padding: 2px;
-    z-index: 2;
+    z-index: 1;
     color: white;
     border-radius: 2px;
 }
-
-.search-list {
-    position: absolute;
-    height: 100%;
-    margin-top: 50px;
-    margin-left: 9px;
-    background: black;
-    float: left;
-    z-index: 1;
-}
-
-.search-list input {
-    margin: 5px;
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-}
-
-li a {
-    margin: 10px;
-    list-style-type: none;
-    font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
-    border-bottom: 1px solid #ccc;
-    text-decoration: none;
-    display: block;
-    color: white;
-    -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
-    -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
-    -o-transition: font-size 0.3s ease, background-color 0.3s ease;
-    -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
-    transition: font-size 0.3s ease, background-color 0.3s ease;
-}
-
-li:last-child {
-    border: none;
-}
-
-li a:hover {
-    font-size: 30px;
-    color: white;
-    text-decoration: none
-}
-
 .weather {
     position: absolute;
-    bottom: 0;
     right: 0;
     width: 30%;
     height: 30%;

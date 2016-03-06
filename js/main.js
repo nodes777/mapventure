@@ -91,7 +91,7 @@ var ViewModel = function() {
                      });
     google.maps.event.addListener(marker, 'click', function(pointer, bubble) {
                          return function() {
-                             bubble.open(map, pointer);
+                             updateDOMText(places[0].title);
                              placeNextMarkers();
                          };
                      }(marker, infoWindow));
@@ -100,13 +100,18 @@ var ViewModel = function() {
 addFirstMarker();
 
 function placeNextMarkers() {
-  removeMarkers();
+  removeAllMarkers();
+
 };
 
-function removeMarkers(){
+function removeAllMarkers(){
     for(i=0; i<gmarkers.length; i++){
         gmarkers[i].setMap(null);
     }
+};
+self.placeTitle = ko.observable();
+function updateDOMText(placeTitle){
+    self.placeTitle(placeTitle);
 }
 
     /*OpenWeatherMap API*/
