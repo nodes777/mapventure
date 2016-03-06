@@ -77,7 +77,16 @@ var Place = function(data) {
 var gmarkers = [];
 var ViewModel = function() {
     var self = this; //self always maps to ViewModel
+    self.placeTitle = ko.observable();//routes to infoBox
+    self.infoTextBox = ko.observable();//routes to infoBox
 
+    function setInitalText(){
+    var initTitle = "Welcome to MapVenture!";
+    var initText = "Welcome to MapVenture! Ipsum Lorem"
+    self.placeTitle(initTitle);
+    self.infoTextBox(initText);
+    }
+setInitalText();
 
  function addFirstMarker(){
     var marker = new google.maps.Marker({
@@ -91,7 +100,7 @@ var ViewModel = function() {
                      });
     google.maps.event.addListener(marker, 'click', function(pointer, bubble) {
                          return function() {
-                             updateDOMText(places[0].title);
+                             updateDOMText(places[0]);
                              placeNextMarkers();
                          };
                      }(marker, infoWindow));
@@ -109,9 +118,9 @@ function removeAllMarkers(){
         gmarkers[i].setMap(null);
     }
 };
-self.placeTitle = ko.observable();
-function updateDOMText(placeTitle){
-    self.placeTitle(placeTitle);
+function updateDOMText(place){
+    self.placeTitle(place.title);
+    self.infoTextBox(place.content);
 }
 
     /*OpenWeatherMap API*/
