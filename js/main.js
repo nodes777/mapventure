@@ -77,62 +77,63 @@ var Place = function(data) {
 var gmarkers = [];
 var ViewModel = function() {
     var self = this; //self always maps to ViewModel
-    self.placeTitle = ko.observable();//routes to infoBox
-    self.infoTextBox = ko.observable();//routes to infoBox
+    self.placeTitle = ko.observable(); //routes to infoBox
+    self.infoTextBox = ko.observable(); //routes to infoBox
 
-    function setInitalText(){
-    var initTitle = "Welcome to MapVenture!";
-    var initText = "Welcome to MapVenture! Ipsum Lorem"
-    self.placeTitle(initTitle);
-    self.infoTextBox(initText);
+    function setInitalText() {
+        var initTitle = "Welcome to MapVenture!";
+        var initText = "Welcome to MapVenture! Ipsum Lorem"
+        self.placeTitle(initTitle);
+        self.infoTextBox(initText);
     }
-setInitalText();
+    setInitalText();
 
- function addFirstMarker(){
-    var marker = new google.maps.Marker({
-                         position: places[0].position,
-                         map: map,
-                         title: places[0].title,
-                         animation: google.maps.Animation.DROP,
-                     });
-    google.maps.event.addListener(marker, 'click', function(pointer, bubble) {
-                         return function() {
-                             updateDOMText(places[0]);
-                             placeNextMarkers();
-                         };
-                     }(marker));
-    gmarkers.push(marker);
- }
-addFirstMarker();
-
-function placeNextMarkers() {
-  removeAllMarkers();
-  for(var i = 1; i<3; i++){
-  var marker = new google.maps.Marker({
-                         position: places[i].position,
-                         map: map,
-                         title: places[i].title,
-                         animation: google.maps.Animation.DROP,
-                     });
-    gmarkers.push(marker);
-    google.maps.event.addListener(marker, 'click', function(innerkey) {
-                         return function() {
-                             updateDOMText(places[innerkey]);
-                             placeNextMarkers();
-                         };
-                     }(i));
+    function addFirstMarker() {
+        var marker = new google.maps.Marker({
+            position: places[0].position,
+            map: map,
+            title: places[0].title,
+            animation: google.maps.Animation.DROP,
+        });
+        google.maps.event.addListener(marker, 'click', function(pointer, bubble) {
+            return function() {
+                updateDOMText(places[0]);
+                placeNextMarkers();
+            };
+        }(marker));
+        gmarkers.push(marker);
     }
-};
+    addFirstMarker();
 
-function removeAllMarkers(){
-    for(i=0; i<gmarkers.length; i++){
-        gmarkers[i].setMap(null);
+    function placeNextMarkers() {
+        removeAllMarkers();
+        for (var i = 1; i < 3; i++) {
+            var marker = new google.maps.Marker({
+                position: places[i].position,
+                map: map,
+                title: places[i].title,
+                animation: google.maps.Animation.DROP,
+            });
+            gmarkers.push(marker);
+            google.maps.event.addListener(marker, 'click', function(innerkey) {
+                return function() {
+                    updateDOMText(places[innerkey]);
+                    removeAllMarkers();
+                };
+            }(i));
+        }
+    };
+
+    function removeAllMarkers() {
+        for (i = 0; i < gmarkers.length; i++) {
+            gmarkers[i].setMap(null);
+        }
+    };
+
+    function updateDOMText(place) {
+        self.placeTitle(place.title);
+        self.infoTextBox(place.content);
     }
-};
-function updateDOMText(place){
-    self.placeTitle(place.title);
-    self.infoTextBox(place.content);
-}
 
     /*OpenWeatherMap API*/
     var weatherURL = "http://api.openweathermap.org/data/2.5/weather?id=2152681&appid=51bdd38ab0bc0b12282355d5e5f57c74";
@@ -145,13 +146,13 @@ function updateDOMText(place){
     $.getJSON(weatherURL, function(data) {
         self.weatherMain(data.weather[0].main);
         var description = data.weather[0].description.charAt(0).toUpperCase() + data.weather[0].description.slice(1); //The JSON doesn't capitalize the first letter of the description, doing it here manually
-       self.weatherDescription(description);
+        self.weatherDescription(description);
         var kelvin = data.main.temp; //JSON temp is given in Kelvin
         var temperature = kelvin * 9 / 5 - 459.67;
-        self.temp(temperature.toFixed(1));//toFixed returns a string to a given decimal place
+        self.temp(temperature.toFixed(1)); //toFixed returns a string to a given decimal place
         var icon = data.weather[0].icon;
         var icoPath = "http://openweathermap.org/img/w/" + icon + ".png";
-       self.iconURL(icoPath);
+        self.iconURL(icoPath);
 
     }).error(function(e) {
         self.weatherMain("Weather Could Not Be Loaded, Sorry about that :(");
@@ -160,10 +161,10 @@ function updateDOMText(place){
 };
 
 var reportGoogleMapsIsNotResponding = function() {
-        var h = document.createElement("H1"); // Create a <h1> element
-        var errorMessage = document.createTextNode("Oh No! Google Maps isn't working right now!"); // Create a text node
-        h.appendChild(errorMessage);
+    var h = document.createElement("H1"); // Create a <h1> element
+    var errorMessage = document.createTextNode("Oh No! Google Maps isn't working right now!"); // Create a text node
+    h.appendChild(errorMessage);
 
-        var search = document.getElementById("search-list");
-        row.insertBefore(h, search);
-    };
+    var search = document.getElementById("search-list");
+    row.insertBefore(h, search);
+};
