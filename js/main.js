@@ -95,22 +95,33 @@ setInitalText();
                          title: places[0].title,
                          animation: google.maps.Animation.DROP,
                      });
-    var infoWindow = new google.maps.InfoWindow({
-                         content: places[0].title
-                     });
     google.maps.event.addListener(marker, 'click', function(pointer, bubble) {
                          return function() {
                              updateDOMText(places[0]);
                              placeNextMarkers();
                          };
-                     }(marker, infoWindow));
+                     }(marker));
     gmarkers.push(marker);
  }
 addFirstMarker();
 
 function placeNextMarkers() {
   removeAllMarkers();
-
+  for(var i = 1; i<3; i++){
+  var marker = new google.maps.Marker({
+                         position: places[i].position,
+                         map: map,
+                         title: places[i].title,
+                         animation: google.maps.Animation.DROP,
+                     });
+    gmarkers.push(marker);
+    google.maps.event.addListener(marker, 'click', function(innerkey) {
+                         return function() {
+                             updateDOMText(places[innerkey]);
+                             placeNextMarkers();
+                         };
+                     }(i));
+    }
 };
 
 function removeAllMarkers(){
