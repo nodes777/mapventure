@@ -14,11 +14,14 @@
 <body>
     <div class="container">
         <div class="row infoBox" id="row">
-            <div class="col-sm-8" id="infoText">
+            <div class="col-sm-7" id="infoText">
                 <h2 id="infoTitle" data-bind="text: placeTitle"></h2>
                 <p id="infoTextBox" data-bind="text: infoTextBox"></p>
             </div>
-            <div class="col-sm-4 weather" id="weather">
+            <div class="col-sm-2">
+                <button data-bind='text: placeChoice, click: btnClick'></button>
+            </div>
+            <div class="col-sm-3 weather" id="weather">
                 <h2 id="weatherTitle">Weather <span id="inPD">in Port Douglas:</span></h2>
                 <div id="weatherIcon" class="weatherIcon"><img data-bind="attr: { src: iconURL }">
                 </div>

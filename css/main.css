@@ -28,7 +28,10 @@ body {
     color: white;
     border-radius: 2px;
 }
-
+.infoBox button{
+   color: white;
+   background-color: black;
+}
 
 .weather h2 {
     text-align: center;

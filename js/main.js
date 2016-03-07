@@ -1,9 +1,10 @@
 var map;
+var gmarkers = [];
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {
-            lat: -16.4936,
+            lat: -16.4999,
             lng: 145.4653
         },
         zoom: 14
@@ -74,17 +75,19 @@ var Place = function(data) {
     this.content = data.content;
     this.marker = data.marker;
 };
-var gmarkers = [];
+
 var ViewModel = function() {
     var self = this; //self always maps to ViewModel
     self.placeTitle = ko.observable(); //routes to infoBox
     self.infoTextBox = ko.observable(); //routes to infoBox
+    self.placeChoice = ko.observable(); //text in button
 
     function setInitalText() {
         var initTitle = "Welcome to MapVenture!";
         var initText = "Welcome to MapVenture! Ipsum Lorem"
         self.placeTitle(initTitle);
         self.infoTextBox(initText);
+        self.placeChoice("Let's Go!");
     }
     setInitalText();
 
@@ -103,7 +106,6 @@ var ViewModel = function() {
         }(marker));
         gmarkers.push(marker);
     }
-    addFirstMarker();
 
     function placeNextMarkers() {
         removeAllMarkers();
@@ -122,8 +124,17 @@ var ViewModel = function() {
                 };
             }(i));
         }
+        self.placeChoice("New Choice");
     };
 
+    self.btnClick = function() {
+        if (gmarkers.length ===0){
+        addFirstMarker();
+        }
+        else {
+        google.maps.event.trigger(gmarkers[0], 'click');
+        }
+    };
     function removeAllMarkers() {
         for (i = 0; i < gmarkers.length; i++) {
             gmarkers[i].setMap(null);
