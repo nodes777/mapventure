@@ -21,7 +21,12 @@ var places = [{
         },
         map: map,
         marker: null,
-        placeId: "4e0b34d6aeb7a4da430a2606",
+        choices: [{
+            choiceName: "Marina"
+            },
+            {
+            choiceName: "The Beach"
+            }],
         content: 'Home base for backpackers. A comfortable friendly place to lay your head.'
     }, {
         title: "Iron Bar",
@@ -31,7 +36,6 @@ var places = [{
         },
         marker: null,
         map: map,
-        placeId: "4b5d4c14f964a520215929e3",
         content: "The only bar in town open after midnight. You'll end up here"
     }, {
         title: "Marina",
@@ -41,7 +45,6 @@ var places = [{
         },
         marker: null,
         map: map,
-        placeId: "4bb687672ea195217cd8ab2f",
         content: 'Rent a boat to go fishing in the Estuaries for $40 an hour. You can hire a grill for the boat too.'
     }, {
         title: "The Point",
@@ -51,7 +54,6 @@ var places = [{
         },
         marker: null,
         map: map,
-        placeId: "4dc72cab7d8b14fb4655abc9",
         content: 'The place where all the post card pictures are taken'
     }, {
         title: "The Beach",
@@ -61,7 +63,6 @@ var places = [{
         },
         marker: null,
         map: map,
-        placeId: "4b847c85f964a520493831e3",
         content: "Four Mile Beach, go paddle boarding, read a book, I don't know I'm not your mom"
     }
 
@@ -69,27 +70,33 @@ var places = [{
 
 var Place = function(data) {
     this.title = ko.observable(data.title);
-    this.placeId = data.placeId;
     this.position = data.position;
     this.map = data.map;
-    this.content = data.content;
+    this.content = ko.observable(data.content);
     this.marker = data.marker;
+    this.choices = ko.observableArray(data.choices);
 };
+
 
 var ViewModel = function() {
     var self = this; //self always maps to ViewModel
-    self.placeTitle = ko.observable(); //routes to infoBox
-    self.infoTextBox = ko.observable(); //routes to infoBox
-    self.placeChoice = ko.observable(); //text in button
+    self.allPlaces = [];//init allPlaces array
+    /*for each obj in places, create a new Place object and push that into allPlaces array*/
+    places.forEach(function(placeData) {
+        self.allPlaces.push(new Place(placeData));
+        });
 
-    function setInitalText() {
-        var initTitle = "Welcome to MapVenture!";
-        var initText = "Welcome to MapVenture! Ipsum Lorem"
-        self.placeTitle(initTitle);
-        self.infoTextBox(initText);
-        self.placeChoice("Let's Go!");
-    }
-    setInitalText();
+    self.koPlacesArray = ko.observableArray([]);
+    /*push allPlaces into places ko array*/
+    self.allPlaces.forEach(function(placeData) {
+        self.koPlacesArray.push(placeData);
+        });
+    /*set the first place to be Dougies*/
+    self.currentPlace = ko.observable(this.koPlacesArray()[0]);
+    console.log(self.currentPlace());
+    console.log(self.currentPlace().choices());
+    console.log(self.currentPlace().choices()[0].choiceName);
+
 
     function addFirstMarker() {
         var marker = new google.maps.Marker({
@@ -98,7 +105,7 @@ var ViewModel = function() {
             title: places[0].title,
             animation: google.maps.Animation.DROP,
         });
-        google.maps.event.addListener(marker, 'click', function(pointer, bubble) {
+        google.maps.event.addListener(marker, 'click', function() {
             return function() {
                 updateDOMText(places[0]);
                 placeNextMarkers();
@@ -116,6 +123,7 @@ var ViewModel = function() {
                 title: places[i].title,
                 animation: google.maps.Animation.DROP,
             });
+            self.placeChoice(places[i].title);
             gmarkers.push(marker);
             google.maps.event.addListener(marker, 'click', function(innerkey) {
                 return function() {
@@ -124,15 +132,11 @@ var ViewModel = function() {
                 };
             }(i));
         }
-        self.placeChoice("New Choice");
     };
 
     self.btnClick = function() {
         if (gmarkers.length ===0){
         addFirstMarker();
-        }
-        else {
-        google.maps.event.trigger(gmarkers[0], 'click');
         }
     };
     function removeAllMarkers() {
