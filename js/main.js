@@ -22,7 +22,10 @@ var places = [{
         map: map,
         marker: null,
         choices: [{
-            choiceName: "Marina"
+            choiceName: "Marina",
+            bar: function() {
+                alert("baz");
+                }
             },
             {
             choiceName: "The Beach"
@@ -135,9 +138,7 @@ var ViewModel = function() {
     };
 
     self.btnClick = function() {
-        if (gmarkers.length ===0){
-        addFirstMarker();
-        }
+        console.log(this);
     };
     function removeAllMarkers() {
         for (i = 0; i < gmarkers.length; i++) {
