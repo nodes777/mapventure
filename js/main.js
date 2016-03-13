@@ -18,17 +18,16 @@ var places = [{
         position: {
             lat: -16.495539,
             lng: 145.462699
-        },
+            },
         map: map,
         marker: null,
         choices: [{
             choiceName: "Marina",
-            bar: function() {
-                alert("baz");
-                }
+            nextLoc: 2
             },
             {
-            choiceName: "The Beach"
+            choiceName: "The Beach",
+            nextLoc: 4
             }],
         content: 'Home base for backpackers. A comfortable friendly place to lay your head.'
     }, {
@@ -96,10 +95,6 @@ var ViewModel = function() {
         });
     /*set the first place to be Dougies*/
     self.currentPlace = ko.observable(this.koPlacesArray()[0]);
-    console.log(self.currentPlace());
-    console.log(self.currentPlace().choices());
-    console.log(self.currentPlace().choices()[0].choiceName);
-
 
     function addFirstMarker() {
         var marker = new google.maps.Marker({
@@ -138,7 +133,8 @@ var ViewModel = function() {
     };
 
     self.btnClick = function() {
-        console.log(this);
+        console.log(this.nextLoc)
+        self.currentPlace(self.koPlacesArray()[this.nextLoc]);
     };
     function removeAllMarkers() {
         for (i = 0; i < gmarkers.length; i++) {
