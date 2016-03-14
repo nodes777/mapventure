@@ -22,50 +22,198 @@ var places = [{
         map: map,
         marker: null,
         choices: [{
-            choiceName: "Marina",
-            nextLoc: 2
+            choiceName: "Origin",
+            nextLoc: 1
             },
             {
-            choiceName: "The Beach",
-            nextLoc: 4
+            choiceName: "Dog Rescue",
+            nextLoc: 2
             }],
         content: 'Home base for backpackers. A comfortable friendly place to lay your head.'
     }, {
-        title: "Iron Bar",
+        title: "Origin",
         position: {
-            lat: -16.481341,
-            lng: 145.462643
-        },
-        marker: null,
+            lat: -16.482790,
+            lng: 145.463072
+            },
         map: map,
-        content: "The only bar in town open after midnight. You'll end up here"
+        marker: null,
+        choices: [{
+            choiceName: "Marina",
+            nextLoc: 3
+            }],
+        content: 'Coffee'
+    }, {
+        title: "Paws and Claws",
+        position: {
+            lat: -16.537440,
+            lng: 145.469130
+            },
+        map: map,
+        marker: null,
+        choices: [{
+            choiceName: "The Point",
+            nextLoc: 4
+            },{
+            choiceName: "The Beach",
+            nextLoc: 5
+            }],
+        content: 'Dog Rescue'
     }, {
         title: "Marina",
         position: {
-            lat: -16.484315,
-            lng: 145.460206
-        },
-        marker: null,
+            lat: -16.484332,
+            lng: 145.460169
+            },
         map: map,
-        content: 'Rent a boat to go fishing in the Estuaries for $40 an hour. You can hire a grill for the boat too.'
+        marker: null,
+        choices: [{
+            choiceName: "The Beach",
+            nextLoc: 5
+            },{
+            choiceName: "Rent a Boat",
+            nextLoc: 6
+            }],
+        content: 'Rent a boat'
     }, {
         title: "The Point",
         position: {
-            lat: -16.482847,
-            lng: 145.467855
-        },
-        marker: null,
+            lat: -16.482867,
+            lng: 145.467823
+            },
         map: map,
-        content: 'The place where all the post card pictures are taken'
+        marker: null,
+        choices: [{
+            choiceName: "Woolies",
+            nextLoc: 8
+            }],
+        content: 'Where everyone takes pictures'
     }, {
         title: "The Beach",
         position: {
-            lat: -16.493202,
-            lng: 145.467472
-        },
-        marker: null,
+            lat: -16.491373,
+            lng: 145.467630
+            },
         map: map,
-        content: "Four Mile Beach, go paddle boarding, read a book, I don't know I'm not your mom"
+        marker: null,
+        choices: [{
+            choiceName: "Woolies",
+            nextLoc: 8
+            }],
+        content: 'Take a swim'
+    },{
+        title: "Rent a Boat",
+        position: {
+            lat:  -16.504386,
+            lng: 145.456382
+            },
+        map: map,
+        marker: null,
+        choices: [{
+            choiceName: "Croc",
+            nextLoc: 7
+            },{
+            choiceName: "Park Sunset",
+            nextLoc: 9
+            }],
+        content: "You're on a boat"
+    },{
+        title: "Croc",
+        position: {
+            lat: -16.505270,
+            lng: 145.457866
+            },
+        map: map,
+        marker: null,
+        choices: [{
+            choiceName: "Restart",
+            nextLoc: 0
+            }],
+        content: "You're eaten"
+    },{
+        title: "Coles",
+        position: {
+            lat: -16.482086,
+            lng: 145.463076
+            },
+        map: map,
+        marker: null,
+        choices: [{
+            choiceName: "Park Sunset",
+            nextLoc: 9
+            }],
+        content: "Supermarket"
+    },{
+        title: "Sunset Park",
+        position: {
+            lat: -16.478307,
+            lng: 145.462534
+            },
+        map: map,
+        marker: null,
+        choices: [{
+            choiceName: "Paddys",
+            nextLoc: 10
+            },{
+            choiceName: "Watergate",
+            nextLoc: 11
+            },{
+            choiceName: "Rattle & Hum",
+            nextLoc: 12
+            }],
+        content: "Its a nice park"
+    },{
+        title: "Paddys",
+        position: {
+            lat: -16.480626,
+            lng: 145.463149
+            },
+        map: map,
+        marker: null,
+        choices: [{
+            choiceName: "Iron Bar",
+            nextLoc: 13
+            }],
+        content: "Irish Bar"
+    },{
+        title: "Watergate",
+        position: {
+            lat: -16.482792,
+            lng: 145.464124
+            },
+        map: map,
+        marker: null,
+        choices: [{
+            choiceName: "Iron Bar",
+            nextLoc: 13
+            }],
+        content: "Nice Bar"
+    },{
+        title: "Rattle & Hum",
+        position: {
+            lat: -16.482889,
+            lng: 145.465001
+            },
+        map: map,
+        marker: null,
+        choices: [{
+            choiceName: "Iron Bar",
+            nextLoc: 13
+            }],
+        content: "Standard bar"
+    },{
+        title: "Iron Bar",
+        position: {
+            lat: -16.481059,
+            lng: 145.462646
+            },
+        map: map,
+        marker: null,
+        choices: [{
+            choiceName: "Restart",
+            nextLoc: 0
+            }],
+        content: "The end"
     }
 
 ];
