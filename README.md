@@ -24,4 +24,7 @@ In order to run the Neighborhood Map application, download the zip or clone the 
 * Foursquare API
 * OpenWeather API
 
+###Attributions###
+* Person icon by Alex Berkowitz from the Noun Project
+
 

@@ -95,46 +95,30 @@ var ViewModel = function() {
         });
     /*set the first place to be Dougies*/
     self.currentPlace = ko.observable(this.koPlacesArray()[0]);
+    /*place the first marker on page load*/
+    addCurrentMarker();
 
-    function addFirstMarker() {
+    function addCurrentMarker() {
         var marker = new google.maps.Marker({
-            position: places[0].position,
+            position: self.currentPlace().position,
             map: map,
-            title: places[0].title,
+            title: self.currentPlace().title,
             animation: google.maps.Animation.DROP,
+            icon: "../mapventure/img/person.png"
         });
         google.maps.event.addListener(marker, 'click', function() {
             return function() {
-                updateDOMText(places[0]);
-                placeNextMarkers();
+                console.log("marker click");
             };
         }(marker));
         gmarkers.push(marker);
     }
 
-    function placeNextMarkers() {
-        removeAllMarkers();
-        for (var i = 1; i < 3; i++) {
-            var marker = new google.maps.Marker({
-                position: places[i].position,
-                map: map,
-                title: places[i].title,
-                animation: google.maps.Animation.DROP,
-            });
-            self.placeChoice(places[i].title);
-            gmarkers.push(marker);
-            google.maps.event.addListener(marker, 'click', function(innerkey) {
-                return function() {
-                    updateDOMText(places[innerkey]);
-                    removeAllMarkers();
-                };
-            }(i));
-        }
-    };
-
     self.btnClick = function() {
-        console.log(this.nextLoc)
+        /*Changes current place*/
         self.currentPlace(self.koPlacesArray()[this.nextLoc]);
+        removeAllMarkers();
+        addCurrentMarker();
     };
     function removeAllMarkers() {
         for (i = 0; i < gmarkers.length; i++) {
