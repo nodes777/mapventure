@@ -1,5 +1,6 @@
 var map;
-var gmarkers = [];
+var currentMarker = [];
+var nextMarkers = [];
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -225,6 +226,7 @@ var Place = function(data) {
     this.content = ko.observable(data.content);
     this.marker = data.marker;
     this.choices = ko.observableArray(data.choices);
+    this.choicesArray = data.choices;
 };
 
 
@@ -245,6 +247,7 @@ var ViewModel = function() {
     self.currentPlace = ko.observable(this.koPlacesArray()[0]);
     /*place the first marker on page load*/
     addCurrentMarker();
+    addNextMarkers();
 
     function addCurrentMarker() {
         var marker = new google.maps.Marker({
@@ -256,28 +259,44 @@ var ViewModel = function() {
         });
         google.maps.event.addListener(marker, 'click', function() {
             return function() {
-                console.log("marker click");
+                console.log("marker click" + this);
             };
         }(marker));
-        gmarkers.push(marker);
+        currentMarker.push(marker);
     }
 
     self.btnClick = function() {
         /*Changes current place*/
         self.currentPlace(self.koPlacesArray()[this.nextLoc]);
-        removeAllMarkers();
+        removeCurrentMarker();
         addCurrentMarker();
-    };
-    function removeAllMarkers() {
-        for (i = 0; i < gmarkers.length; i++) {
-            gmarkers[i].setMap(null);
-        }
+        removeNextMarkers();
+        addNextMarkers();
     };
 
-    function updateDOMText(place) {
-        self.placeTitle(place.title);
-        self.infoTextBox(place.content);
+
+    function addNextMarkers() {
+        self.currentPlace().choicesArray.forEach(function(obj){
+             var marker = new google.maps.Marker({
+                position: self.koPlacesArray()[obj.nextLoc].position,
+                map: map,
+                title: self.koPlacesArray()[obj.nextLoc].title,
+                animation: google.maps.Animation.DROP,
+            });
+        nextMarkers.push(marker);
+        });
     }
+
+    function removeCurrentMarker() {
+        for (i = 0; i < currentMarker.length; i++) {
+            currentMarker[i].setMap(null);
+        }
+    };
+    function removeNextMarkers() {
+        for (i = 0; i < nextMarkers.length; i++) {
+            nextMarkers[i].setMap(null);
+        }
+    };
 
     /*OpenWeatherMap API*/
     var weatherURL = "http://api.openweathermap.org/data/2.5/weather?id=2152681&appid=51bdd38ab0bc0b12282355d5e5f57c74";
