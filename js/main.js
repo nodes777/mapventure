@@ -90,7 +90,7 @@ var places = [{
         marker: null,
         zoom: 15,
         choices: [{
-            choiceName: "Woolies",
+            choiceName: "Coles",
             nextLoc: 8
             }],
         content: 'Where everyone takes pictures'
@@ -104,7 +104,7 @@ var places = [{
         marker: null,
         zoom: 15,
         choices: [{
-            choiceName: "Woolies",
+            choiceName: "Coles",
             nextLoc: 8
             }],
         content: 'Take a swim'
@@ -285,16 +285,6 @@ var ViewModel = function() {
         map.setZoom(self.currentPlace().zoom);
     }
 
-    self.btnClick = function() {
-        /*Changes current place*/
-        self.currentPlace(self.koPlacesArray()[this.nextLoc]);
-        removeMarkers(currentMarker);
-        addCurrentMarker();
-        removeMarkers(nextMarkers);
-        addNextMarkers();
-    };
-
-
     function addNextMarkers() {
         self.currentPlace().choicesArray.forEach(function(obj){
              var marker = new google.maps.Marker({
@@ -313,6 +303,14 @@ var ViewModel = function() {
         }
     };
 
+    self.btnClick = function() {
+        /*Changes current place*/
+        self.currentPlace(self.koPlacesArray()[this.nextLoc]);
+        removeMarkers(currentMarker);
+        addCurrentMarker();
+        removeMarkers(nextMarkers);
+        addNextMarkers();
+    };
     /*OpenWeatherMap API*/
     var weatherURL = "http://api.openweathermap.org/data/2.5/weather?id=2152681&appid=51bdd38ab0bc0b12282355d5e5f57c74";
 
