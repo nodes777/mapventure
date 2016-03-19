@@ -8,7 +8,7 @@ function initMap() {
             lat: -16.4999,
             lng: 145.4653
         },
-        zoom: 14
+        zoom: 12
     });
 
     ko.applyBindings(new ViewModel());
@@ -22,6 +22,7 @@ var places = [{
             },
         map: map,
         marker: null,
+        zoom: 12,
         choices: [{
             choiceName: "Origin",
             nextLoc: 1
@@ -30,7 +31,7 @@ var places = [{
             choiceName: "Dog Rescue",
             nextLoc: 2
             }],
-        content: 'Home base for backpackers. A comfortable friendly place to lay your head.'
+        content: 'You wake up at Dougies, your home base in Port Douglas , and roll out of bed and into your flip flops. It’s another day in paradise and you’ve got heaps to do. You could start your day off with a cup of coffee at Origin Espresso, or head down to the animal shelter, Paws and Claws, and volunteer to walk a dog. Where do you go?'
     }, {
         title: "Origin",
         position: {
@@ -39,11 +40,12 @@ var places = [{
             },
         map: map,
         marker: null,
+        zoom: 14,
         choices: [{
             choiceName: "Marina",
             nextLoc: 3
             }],
-        content: 'Coffee'
+        content: 'You bike down to Origin, and the barista alreadys knows your order. With your flat white in hand, you sit outside in a canvas chair watching the tourists go by. Your friend texts you and wants to meet up at the Marina. Caffeinated, you feel ready for adventure.'
     }, {
         title: "Paws and Claws",
         position: {
@@ -52,6 +54,7 @@ var places = [{
             },
         map: map,
         marker: null,
+        zoom: 12,
         choices: [{
             choiceName: "The Point",
             nextLoc: 4
@@ -59,7 +62,7 @@ var places = [{
             choiceName: "The Beach",
             nextLoc: 5
             }],
-        content: 'Dog Rescue'
+        content: 'Obviously you’re a dog person and you bike just out of town to the shelter. You see a lovely pup named Misty and she happily pulls you out of her fence and out for a brisk walk. You zip around town and both of you are fatigued by the end of the loop. Having done your good deed for the day you could go relax on the beach, or go up to the Point at the end of the peninsula. Where do you go?'
     }, {
         title: "Marina",
         position: {
@@ -68,6 +71,7 @@ var places = [{
             },
         map: map,
         marker: null,
+        zoom: 14,
         choices: [{
             choiceName: "The Beach",
             nextLoc: 5
@@ -84,6 +88,7 @@ var places = [{
             },
         map: map,
         marker: null,
+        zoom: 15,
         choices: [{
             choiceName: "Woolies",
             nextLoc: 8
@@ -97,6 +102,7 @@ var places = [{
             },
         map: map,
         marker: null,
+        zoom: 15,
         choices: [{
             choiceName: "Woolies",
             nextLoc: 8
@@ -110,6 +116,7 @@ var places = [{
             },
         map: map,
         marker: null,
+        zoom: 15,
         choices: [{
             choiceName: "Croc",
             nextLoc: 7
@@ -126,6 +133,7 @@ var places = [{
             },
         map: map,
         marker: null,
+        zoom: 15,
         choices: [{
             choiceName: "Restart",
             nextLoc: 0
@@ -139,6 +147,7 @@ var places = [{
             },
         map: map,
         marker: null,
+        zoom: 15,
         choices: [{
             choiceName: "Park Sunset",
             nextLoc: 9
@@ -151,6 +160,7 @@ var places = [{
             lng: 145.462534
             },
         map: map,
+        zoom: 15,
         marker: null,
         choices: [{
             choiceName: "Paddys",
@@ -171,6 +181,7 @@ var places = [{
             },
         map: map,
         marker: null,
+        zoom: 15,
         choices: [{
             choiceName: "Iron Bar",
             nextLoc: 13
@@ -184,6 +195,7 @@ var places = [{
             },
         map: map,
         marker: null,
+        zoom: 15,
         choices: [{
             choiceName: "Iron Bar",
             nextLoc: 13
@@ -197,6 +209,7 @@ var places = [{
             },
         map: map,
         marker: null,
+        zoom: 15,
         choices: [{
             choiceName: "Iron Bar",
             nextLoc: 13
@@ -210,6 +223,7 @@ var places = [{
             },
         map: map,
         marker: null,
+        zoom: 15,
         choices: [{
             choiceName: "Restart",
             nextLoc: 0
@@ -227,6 +241,7 @@ var Place = function(data) {
     this.marker = data.marker;
     this.choices = ko.observableArray(data.choices);
     this.choicesArray = data.choices;
+    this.zoom = data.zoom;
 };
 
 
@@ -260,9 +275,13 @@ var ViewModel = function() {
         google.maps.event.addListener(marker, 'click', function() {
             return function() {
                 console.log("marker click" + this);
+                console.log(this);
             };
         }(marker));
         currentMarker.push(marker);
+        map.panTo(marker.getPosition())
+        console.log(self.currentPlace().zoom);
+        map.setZoom(self.currentPlace().zoom);
     }
 
     self.btnClick = function() {
