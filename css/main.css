@@ -1,7 +1,9 @@
-body {
+body, html {
     height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
+    background-color: black;
 }
 
 .container {
@@ -15,7 +17,7 @@ body {
 }
 
 .map-container {
-    height: 550px;
+    height: 100%;
     max-width: 100%;
 }
 .infoBox {
@@ -33,6 +35,11 @@ body {
    color: white;
    background-color: black;
 }
+.choices{}
+
+.weather{
+    background-color: black;
+}
 
 .weather h2 {
     text-align: center;
@@ -47,47 +54,3 @@ body {
     padding: 20px;
 }
 
-@media (max-width: 1150px) {
-    #weatherDescription {
-        display: none;
-    }
-}
-
-@media (max-width: 800px) {
-    #inPD {
-        display: none;
-    }
-}
-
-@media (max-width: 800px) {
-    .search-list {
-        width: 27%;
-    }
-    .search-list input {
-        width: 90%;
-    }
-}
-
-@media (max-width: 500px) {
-    #temp {
-        display: none;
-    }
-    #weatherMain {
-        display: none;
-    }
-    #weatherIcon {
-        float: center;
-    }
-    .weather {
-        height: 25%;
-    }
-}
-
-@media (max-width: 400px) {
-    .weather h2 {
-        display: none;
-    }
-    .weather {
-        height: 17%;
-    }
-}
