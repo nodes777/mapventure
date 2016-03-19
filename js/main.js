@@ -268,7 +268,7 @@ var ViewModel = function() {
         var marker = new google.maps.Marker({
             position: self.currentPlace().position,
             map: map,
-            title: self.currentPlace().title,
+            title: self.currentPlace().title(),
             animation: google.maps.Animation.DROP,
             icon: "../mapventure/img/person.png"
         });
@@ -300,7 +300,7 @@ var ViewModel = function() {
              var marker = new google.maps.Marker({
                 position: self.koPlacesArray()[obj.nextLoc].position,
                 map: map,
-                title: self.koPlacesArray()[obj.nextLoc].title,
+                title: self.koPlacesArray()[obj.nextLoc].title(),
                 animation: google.maps.Animation.DROP,
             });
         nextMarkers.push(marker);
