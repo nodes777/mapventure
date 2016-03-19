@@ -41,6 +41,7 @@ var places = [{
         map: map,
         marker: null,
         zoom: 14,
+        icon: "../mapventure/img/coffee.png",
         choices: [{
             choiceName: "Marina",
             nextLoc: 3
@@ -55,6 +56,7 @@ var places = [{
         map: map,
         marker: null,
         zoom: 12,
+        icon: "../mapventure/img/dog.png",
         choices: [{
             choiceName: "The Point",
             nextLoc: 4
@@ -72,6 +74,7 @@ var places = [{
         map: map,
         marker: null,
         zoom: 14,
+        icon: "../mapventure/img/anchor.png",
         choices: [{
             choiceName: "The Beach",
             nextLoc: 5
@@ -89,6 +92,7 @@ var places = [{
         map: map,
         marker: null,
         zoom: 15,
+        icon: "../mapventure/img/lookout.png",
         choices: [{
             choiceName: "Coles",
             nextLoc: 8
@@ -103,6 +107,7 @@ var places = [{
         map: map,
         marker: null,
         zoom: 15,
+        icon: "../mapventure/img/beach.png",
         choices: [{
             choiceName: "Coles",
             nextLoc: 8
@@ -117,6 +122,7 @@ var places = [{
         map: map,
         marker: null,
         zoom: 15,
+        icon: "../mapventure/img/boat.png",
         choices: [{
             choiceName: "Croc",
             nextLoc: 7
@@ -134,6 +140,7 @@ var places = [{
         map: map,
         marker: null,
         zoom: 15,
+        icon: "../mapventure/img/croc.png",
         choices: [{
             choiceName: "Restart",
             nextLoc: 0
@@ -148,6 +155,7 @@ var places = [{
         map: map,
         marker: null,
         zoom: 15,
+        icon: "../mapventure/img/store.png",
         choices: [{
             choiceName: "Park Sunset",
             nextLoc: 9
@@ -162,6 +170,7 @@ var places = [{
         map: map,
         zoom: 15,
         marker: null,
+        icon: "../mapventure/img/bench.png",
         choices: [{
             choiceName: "Paddys",
             nextLoc: 10
@@ -182,6 +191,7 @@ var places = [{
         map: map,
         marker: null,
         zoom: 15,
+        icon: "../mapventure/img/beer.png",
         choices: [{
             choiceName: "Iron Bar",
             nextLoc: 13
@@ -196,6 +206,7 @@ var places = [{
         map: map,
         marker: null,
         zoom: 15,
+        icon: "../mapventure/img/glass.png",
         choices: [{
             choiceName: "Iron Bar",
             nextLoc: 13
@@ -209,6 +220,7 @@ var places = [{
             },
         map: map,
         marker: null,
+        icon: "../mapventure/img/bottle.png",
         zoom: 15,
         choices: [{
             choiceName: "Iron Bar",
@@ -224,6 +236,7 @@ var places = [{
         map: map,
         marker: null,
         zoom: 15,
+        icon: "../mapventure/img/shots.png",
         choices: [{
             choiceName: "Restart",
             nextLoc: 0
@@ -242,6 +255,7 @@ var Place = function(data) {
     this.choices = ko.observableArray(data.choices);
     this.choicesArray = data.choices;
     this.zoom = data.zoom;
+    this.icon = data.icon;
 };
 
 
@@ -292,6 +306,7 @@ var ViewModel = function() {
                 map: map,
                 title: self.koPlacesArray()[obj.nextLoc].title(),
                 animation: google.maps.Animation.DROP,
+                icon: self.koPlacesArray()[obj.nextLoc].icon,
             });
         nextMarkers.push(marker);
         });

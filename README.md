@@ -34,6 +34,8 @@ In order to run the Neighborhood Map application, download the zip or clone the 
 * Martini Glass by Aiga Collection
 * Beer by Edward Boatman
 * Shots by Andrey Vasiliev
+* Croc by Joao Santos
+* Lookout by National Park Service
 
 
 
