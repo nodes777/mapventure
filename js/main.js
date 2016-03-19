@@ -279,17 +279,18 @@ var ViewModel = function() {
             };
         }(marker));
         currentMarker.push(marker);
+        /*Pan to current position*/
         map.panTo(marker.getPosition())
-        console.log(self.currentPlace().zoom);
+        /*Zoom to appropriate level*/
         map.setZoom(self.currentPlace().zoom);
     }
 
     self.btnClick = function() {
         /*Changes current place*/
         self.currentPlace(self.koPlacesArray()[this.nextLoc]);
-        removeCurrentMarker();
+        removeMarkers(currentMarker);
         addCurrentMarker();
-        removeNextMarkers();
+        removeMarkers(nextMarkers);
         addNextMarkers();
     };
 
@@ -306,14 +307,9 @@ var ViewModel = function() {
         });
     }
 
-    function removeCurrentMarker() {
-        for (i = 0; i < currentMarker.length; i++) {
-            currentMarker[i].setMap(null);
-        }
-    };
-    function removeNextMarkers() {
-        for (i = 0; i < nextMarkers.length; i++) {
-            nextMarkers[i].setMap(null);
+    function removeMarkers(array) {
+        for (i = 0; i < array.length; i++) {
+            array[i].setMap(null);
         }
     };
 
