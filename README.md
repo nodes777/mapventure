@@ -24,6 +24,7 @@ In order to run the Neighborhood Map application,
 * Implement maps changing on weather
 * Implement text and choices changing on weather
 * HTML5 Canvas animations on actions
+* Create text content dependant on actions from earlier in the day
 
 ###Attributions###
 ####Icons from The Noun Project####

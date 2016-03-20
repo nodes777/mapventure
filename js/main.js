@@ -211,7 +211,7 @@ var places = [{
             choiceName: "Iron Bar",
             nextLoc: 13
             }],
-        content: "Nice Bar"
+        content: "Deciding that tonight should be a special occasion, you don the one shirt you don’t wear for work and all parade into Watergate. You order an espresso martini, because you’ve never had one before. You feel fancy. After enjoying the atmosphere and feeling a little more elite than usual, you realize you should go easy on your wallet. The bar’s closing anyway and there’s only one place to go. Iron Bar. You gather your mates and get ready for your last hurrah."
     },{
         title: "Rattle & Hum",
         position: {
@@ -226,7 +226,7 @@ var places = [{
             choiceName: "Iron Bar",
             nextLoc: 13
             }],
-        content: "Standard bar"
+        content: "Rattle and Hum? Really? Ok whatever. You reluctantly jockey for pool time as your friends trade rounds during happy hour. The bars mostly empty, so you spend more time with your mouth in a cup than talking. Luckily one of your mates has the idea to go to Iron Bar. Everywhere else is closing anyway. Embarrassed by your poor life choices, you finish your game of pool by losing and go to pick up the pieces of your ego in the only place where others leave it behind. Iron Bar."
     },{
         title: "Iron Bar",
         position: {
@@ -241,7 +241,7 @@ var places = [{
             choiceName: "Restart",
             nextLoc: 0
             }],
-        content: "The end"
+        content: "Iron Bar. The final frontier. You order a pitcher, with previous experience telling you to avoid the house draft. Successfully imbibed you confidently saunter to the dance floor. The music pounds and you shake as the walls become blurred. It’s been a wonderful day, and you could do this all over again…"
     }
 
 ];
