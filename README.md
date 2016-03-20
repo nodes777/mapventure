@@ -1,8 +1,8 @@
-#Project 5- Neighborhood Map#
+#Port Douglas Mapventure#
 
-A single page application featuring Port Douglas QLD, Australia. This application identifies several of my favorite places on the penisula.
+A single page application featuring Port Douglas QLD, Australia. This application identifies several of my favorite places on the penisula and runs you through a text adventure overlaid on a google map.
 
-In order to run the Neighborhood Map application, download the zip or clone the repository to your local machine, and open index.html. Type in the search bar to sort through available locations. Click on the icons on the map or in the list in order to view info windows.
+In order to run the Neighborhood Map application,
 
 
 ###References###
@@ -19,6 +19,11 @@ In order to run the Neighborhood Map application, download the zip or clone the 
 * knockout.js
 * Google Maps API
 * OpenWeather API
+
+###To-Dos##
+* Implement maps changing on weather
+* Implement text and choices changing on weather
+* HTML5 Canvas animations on actions
 
 ###Attributions###
 ####Icons from The Noun Project####

@@ -55,7 +55,7 @@ var places = [{
             },
         map: map,
         marker: null,
-        zoom: 12,
+        zoom: 13,
         icon: "../mapventure/img/dog.png",
         choices: [{
             choiceName: "The Point",
@@ -76,13 +76,13 @@ var places = [{
         zoom: 14,
         icon: "../mapventure/img/anchor.png",
         choices: [{
-            choiceName: "The Beach",
-            nextLoc: 5
-            },{
             choiceName: "Rent a Boat",
             nextLoc: 6
+            },{
+            choiceName: "The Beach",
+            nextLoc: 5
             }],
-        content: 'Rent a boat'
+        content: 'You hop your bike over the curb and park it in a rack. You wander over to your friends by the bay, they’re deliberating about what to do next. The archerfish swim lazy circles around the pier trestles and you wonder if they could shoot you if they wanted. The team turns to you and you have to make the decision. Do you want to rent a boat and go fishing down the river? Or do you want to go to the beach?'
     }, {
         title: "The Point",
         position: {
@@ -97,7 +97,7 @@ var places = [{
             choiceName: "Coles",
             nextLoc: 8
             }],
-        content: 'Where everyone takes pictures'
+        content: 'You zig zag through town and up the windy path to the top of hill. The Point at Trinity Bay lookout has a beautiful view of four miles of beach below you. You snap some pics and see some dolphins playing in the water below. Your buddy texts you and asks if you want to get a bunch of people together and do a sunset dinner in the park. Of course you do. That sounds awesome. Catch is, you gotta go to the store and pick up all the food. No worries, though. The grocery store is downhill.'
     }, {
         title: "The Beach",
         position: {
@@ -112,7 +112,7 @@ var places = [{
             choiceName: "Coles",
             nextLoc: 8
             }],
-        content: 'Take a swim'
+        content: 'You swerve back into town, through the tree lined sidewalks and burst onto Four Mile Beach. You dump your bike in the sand and bound towards the water. The water is clear and some sting rays make way for your frolicking. Lilting on the water you realize you’re getting kind of hungry. You step out of the ocean and dry off. While setting up your hammock for a quick mid-day nap, your friend texts you and asks if you want to do a group sunset dinner at the park. Naturally you do, and volunteer to get the food, but not before a quick sun snooze.'
     },{
         title: "Rent a Boat",
         position: {
@@ -124,13 +124,13 @@ var places = [{
         zoom: 15,
         icon: "../mapventure/img/boat.png",
         choices: [{
-            choiceName: "Croc",
-            nextLoc: 7
-            },{
             choiceName: "Park Sunset",
             nextLoc: 9
+            },{
+            choiceName: "Croc",
+            nextLoc: 7
             }],
-        content: "You're on a boat"
+        content: "Taking a boat down the inlet sounds like a good time. Luckily you’re only a few steps from the boat hire and the attendant loads you up with some poles and bait. He kicks you off the dock and down the creek you go. Past the yachts and mangroves you cruise to a crossing. You drop anchor and send out your line. The day rolls on without much biting. Your land laden friend texts you and asks if you all want to have a group sunset dinner. That sounds great, but you haven’t really had any thrills today. You do see a croc lounging on the side. Maybe you could pet it??????"
     },{
         title: "Croc",
         position: {
@@ -145,7 +145,7 @@ var places = [{
             choiceName: "Restart",
             nextLoc: 0
             }],
-        content: "You're eaten"
+        content: "You lean over the edge of the boat and reach your hand out to touch the beast. Wham! The croc whips around and pulls you into the water. What did you expect to happen? You drown and die. Game over. Maybe next time you’ll make more responsible decisions."
     },{
         title: "Coles",
         position: {
@@ -157,10 +157,10 @@ var places = [{
         zoom: 15,
         icon: "../mapventure/img/store.png",
         choices: [{
-            choiceName: "Park Sunset",
+            choiceName: "To the park!",
             nextLoc: 9
             }],
-        content: "Supermarket"
+        content: "Browsing the aisles you pick up supper supplies. Bread and cheese like a Frenchman, onions to sauté, burgers and kanga bangas, and French onion dip to piece it all together. On the way to the register you pick up one final crucial ingredient. Tim. Tams. Truly a bountiful feast. And you hustle out the door just a few minutes before sunset."
     },{
         title: "Sunset Park",
         position: {
@@ -181,7 +181,7 @@ var places = [{
             choiceName: "Rattle & Hum",
             nextLoc: 12
             }],
-        content: "Its a nice park"
+        content: "Everyone’s at the park and sparking up the grills and conversation. The sun is hovering, partially obscured by the horizon. Waves lap at the edge of the park and you bite into a juicy burger. You cavort among the people and as the sun lets out its last gasp of light, conversation turns to the nightlife. Should you go to Paddy’s? With a live band and Guinness it’s always a good time.  Or go fancy and enjoy cocktails at Watergate? Or maybe save some money and go cheap at Rattle and Hum? It’s all up to you now."
     },{
         title: "Paddys",
         position: {
@@ -196,7 +196,7 @@ var places = [{
             choiceName: "Iron Bar",
             nextLoc: 13
             }],
-        content: "Irish Bar"
+        content: "Another rendition of Wagon Wheel is churned out by a travelling jug band. You go to the bar and ask for an Irish Car Bomb, but they don’t know what that is. Guess it’s an American thing. You grab a round of Guinness and go back to your group, reflecting on the day.  A few games of pool, and you’re ready to move on. It’s almost midnight and the bars here all have an odd habit of closing then. All except one. Iron Bar. You have accepted your fate."
     },{
         title: "Watergate",
         position: {
@@ -352,8 +352,8 @@ var ViewModel = function() {
 };
 
 var reportGoogleMapsIsNotResponding = function() {
-    var h = document.createElement("H1"); // Create a <h1> element
-    var errorMessage = document.createTextNode("Oh No! Google Maps isn't working right now!"); // Create a text node
+    var h = document.createElement("H2"); // Create a <h1> element
+    var errorMessage = document.createTextNode(" Oh No! Google Maps isn't working right now! Sorry but we kinda need it to use this app."); // Create a text node
     h.appendChild(errorMessage);
 
     var search = document.getElementById("search-list");
