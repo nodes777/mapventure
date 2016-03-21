@@ -23,6 +23,10 @@ In order to run the Neighborhood Map application,
 ###To-Dos##
 * Implement maps changing on weather
 * Seperate out JSON data into new file
+* Favicon
+* Margins on buttons
+* Link button click to icon click
+
 * Implement text and choices changing on weather
 * HTML5 Canvas animations on actions
 * Create text content dependant on actions from earlier in the day
