@@ -2,7 +2,7 @@
 
 A single page application featuring Port Douglas QLD, Australia. This application identifies several of my favorite places on the penisula and runs you through a text adventure overlaid on a google map.
 
-The app is live [here](taylornodell.com/mapventure/index.com)
+The app is live [here](https://taylornodell.com/mapventure/index.com)
 
 ###References###
 
