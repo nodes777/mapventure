@@ -31,12 +31,17 @@ body, html {
     color: white;
     border-radius: 2px;
 }
-.infoBox button{
-   color: white;
-   background-color: black;
-}
+
 .choices{
-    padding: 2px;
+    text-align: center;
+    margin-top: 20px;
+
+}
+.choices button{
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+
 }
 
 .weather{

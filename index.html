@@ -8,7 +8,6 @@
     <title>Mapventure</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet" >
-    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/>
 </head>
 
 <body>
@@ -20,7 +19,7 @@
             </div>
             <div class="col-sm-2 choices" data-bind="with: currentPlace" >
                 <div data-bind="foreach: choices">
-                    <button data-bind='text: choiceName, click: $root.btnClick'></button>
+                    <button class= "btn btn-primary" data-bind='text: choiceName, click: $root.btnClick'></button>
                 </div>
             </div>
             <div class="col-sm-3 weather" id="weather">
