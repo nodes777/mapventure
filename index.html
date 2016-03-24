@@ -7,24 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mapventure</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet" >
+    <link href="css/main.css" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
-        <div class="row infoBox" id="row" >
+        <div class="row infoBox" id="row">
             <div data-bind="with: currentPlace" class="col-sm-7" id="infoText">
                 <h2 id="infoTitle" data-bind="text: title"></h2>
                 <p id="infoTextBox" data-bind="text: content"></p>
             </div>
-            <div class="col-sm-2 choices" data-bind="with: currentPlace" >
+            <div class="col-sm-2 choices" data-bind="with: currentPlace">
                 <div data-bind="foreach: choices">
-                    <button class= "btn btn-primary" data-bind='text: choiceName, click: $root.btnClick'></button>
+                    <button class="btn btn-primary" data-bind='text: choiceName, click: $root.btnClick'></button>
                 </div>
             </div>
             <div class="col-sm-3 weather" id="weather">
-                <h2 id="weatherTitle">Weather</h2>
-                <div id="weatherIcon" class="weatherIcon"><img data-bind="attr: { src: iconURL }">
+                <h2 id="weatherTitle">Current Weather</h2>
+                <div id="weatherIcon" class="weatherIcon"><img data-bind="attr: { src: iconURL }" alt="Weather Icon">
                 </div>
                 <p id="weatherMain" data-bind="text: weatherMain"></p>
                 <p id="weatherDescription" data-bind="text: weatherDescription"></p>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="map-container" id="map-container">
-            <div id="map" class="map"></div>
+        <div id="map" class="map"></div>
     </div>
 
     <script src="js/knockout-3.4.0.js"></script>

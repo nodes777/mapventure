@@ -23,12 +23,11 @@ The app is live <a href="http://taylornodell.com/mapventure/index.html" target="
 * Implement maps changing on weather
 * Seperate out JSON data into new file
 * Favicon
-* Margins on buttons
 * Link button click to icon click
 
 * Implement text and choices changing on weather
 * HTML5 Canvas animations on actions
-* Create text content dependant on actions from earlier in the day
+* Create text content dependent on actions from earlier in the day
 * Remake in Angular
 
 ###Attributions###
