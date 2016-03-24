@@ -31,7 +31,7 @@ var places = [{
             choiceName: "Dog Rescue",
             nextLoc: 2
             }],
-        content: 'You wake up at Dougies, your home base in Port Douglas , and roll out of bed and into your flip flops. It’s another day in paradise and you’ve got heaps to do. You could start your day off with a cup of coffee at Origin Espresso, or head down to the animal shelter, Paws and Claws, and volunteer to walk a dog. Where do you go?'
+        content: 'You wake up at Dougies, your home base in Port Douglas, and roll out of bed and into your flip flops. It’s another day in paradise and you’ve got heaps to do. You could start your day off with a cup of coffee at Origin Espresso, or head down to the animal shelter, Paws and Claws, and volunteer to walk a dog. Where do you go?'
     }, {
         title: "Origin",
         position: {
@@ -157,7 +157,7 @@ var places = [{
         zoom: 15,
         icon: "../mapventure/img/store.png",
         choices: [{
-            choiceName: "To the park!",
+            choiceName: "To the Park!",
             nextLoc: 9
             }],
         content: "Browsing the aisles you pick up supper supplies. Bread and cheese like a Frenchman, onions to sauté, burgers and kanga bangas, and French onion dip to piece it all together. On the way to the register you pick up one final crucial ingredient. Tim. Tams. Truly a bountiful feast. And you hustle out the door just a few minutes before sunset."
